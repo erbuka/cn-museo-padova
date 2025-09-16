@@ -1,0 +1,131 @@
+$spacer: 1rem;
+$top-bar-height: 5rem;
+$bottom-bar-height: 5rem;
+$base-font-size: 16px;
+$font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$background-color: #121212;
+$foreground-color: white;
+
+@keyframes slidingText {
+  0% {
+    transform: translateY(-50%) translateX(100vw);
+  }
+  100% {
+    transform: translateY(-50%) translateX(-100%);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  font-size: $base-font-size;
+  font-family: $font-family;
+  background-color: $background-color;
+  color: $foreground-color;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+.cn-app-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .cn-top-bar {
+    padding: $spacer;
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: $top-bar-height;
+    display: flex;
+    align-items: center;  
+  }
+
+  .cn-slider {
+    flex-grow: 1;
+    position: relative;
+    height: calc(100% - #{$top-bar-height} - #{$bottom-bar-height});
+
+    .swiper {
+      height: 100%;
+    }
+
+    .cn-slide-wrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+
+      .cn-image-or-video {
+        flex: 1 1 0;
+        height: 100%;
+
+        img,
+        video {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+
+        &.cn-cover {
+
+          img,
+          video {
+            object-fit: cover;
+            object-position: center center;
+          }
+        }
+
+        &.cn-contain {
+
+          img,
+          video {
+            object-fit: contain;
+            object-position: center center;
+          }
+        }
+
+      }
+
+      .cn-text {
+        padding: $spacer;
+        flex: 1 1 0;
+      }
+
+    }
+
+  }
+
+  .cn-bottom-bar {
+    position: relative;
+    background-color: red;
+    flex-grow: 0;
+    flex-shrink: 0;
+    transition: height 0.3s ease;
+    height: $bottom-bar-height;
+    overflow: hidden;
+
+    .cn-text {
+      padding: $spacer;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      white-space: nowrap;
+      animation: slidingText 20s linear infinite;
+
+      * {
+        display: inline-block;
+      }
+    }
+
+    &.cn-hidden {
+      height: 0;
+    }
+
+  }
+
+}
