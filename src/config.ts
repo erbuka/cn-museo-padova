@@ -19,5 +19,6 @@ export const ModusConfig  = {
     fileCropMode: process.env.MO_PAGE_CROP_MODE_FIELD_ID || '',
     duration: process.env.MO_PAGE_DURATION_FIELD_ID || '',
     showBottomText: process.env.MO_PAGE_SHOW_BOTTOM_TEXT_FIELD_ID || ''
-  }
+  },
+  headerLogo: process.env.HEADER_LOGO || 'assets/logo.svg'
 }

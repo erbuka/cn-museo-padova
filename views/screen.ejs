@@ -20,39 +20,47 @@
       <h1>
         <%=screenInfo.title%>
       </h1>
+      <div class="cn-logo">
+        <img src="<%=webAssets.headerLogo%>">
+      </div>
     </div>
     <div class="cn-slider">
       <div class="swiper">
         <div class="swiper-wrapper">
           <% for(let page of screenInfo.pages) { %>
-            <div class="swiper-slide" data-swiper-autoplay="<%=page.duration * 1000%>" data-cn-bottom-text-visible="true" data-cn-bottom-text-visible="<%=page.showBottomText%>" >
+            <div class="swiper-slide" data-swiper-autoplay="<%=page.duration * 100%>"
+              data-cn-bottom-text-visible="<%=page.showBottomText%>">
               <div class="cn-slide-wrapper">
 
                 <div class="cn-image-or-video cn-<%=page.fileMode%>">
-                  <% if(page.fileType === 'image') { %>
+                  <% if(page.fileType==='image' ) { %>
                     <img src="<%=page.fileUrl%>" alt="<%=page.title%>">
-                  <% } else if(page.fileType === 'video') { %>
-                    <video muted>
-                      <source src="<%=page.fileUrl%>" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>  
-                  <% } %>
+                    <% } else if(page.fileType==='video' ) { %>
+                      <video muted>
+                        <source src="<%=page.fileUrl%>" type="video/mp4">
+                        Your browser does not support the video tag.
+                      </video>
+                      <% } %>
                 </div>
 
-                <% if(page.mode === 'text-and-image') { %>
+                <% if(page.mode==='text-and-image' ) { %>
                   <div class="cn-text">
-                    <h2><%=page.title%></h2>
+                    <h2>
+                      <%=page.title%>
+                    </h2>
                     <div><%-page.description%></div>
                   </div>
-                <% } %>
+                  <% } %>
               </div>
             </div>
-          <% } %>
+            <% } %>
         </div>
       </div>
     </div>
     <div class="cn-bottom-bar">
-      <div class="cn-text" style="animation-duration: <%=screenInfo.bottomText.length / 15%>s;"><%-screenInfo.bottomText%></div>
+      <div class="cn-text" style="animation-duration: <%=screenInfo.bottomText.length / 15%>s;">
+        <%-screenInfo.bottomText%>
+      </div>
     </div>
   </div>
 </body>

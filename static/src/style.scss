@@ -38,12 +38,25 @@ body {
   flex-direction: column;
 
   .cn-top-bar {
+    position: relative;
     padding: $spacer;
     flex-grow: 0;
     flex-shrink: 0;
     height: $top-bar-height;
     display: flex;
     align-items: center;  
+
+    .cn-logo {
+      position: absolute;
+      top: $spacer;
+      left: 50%;
+      transform: translateX(-50%);
+      height: calc(#{$top-bar-height} - 2 * #{$spacer});
+      img {
+        height: 100%;
+      }
+    }
+
   }
 
   .cn-slider {
